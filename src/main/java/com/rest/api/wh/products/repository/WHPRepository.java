@@ -6,5 +6,5 @@ import com.rest.api.wh.products.entity.WHProducts;
 
 public interface WHPRepository extends JpaRepository<WHProducts, Integer>{
 
-	//public WHProducts findByWPId(long wPId);
+	public WHProducts findBywPId(long wPId);
 }

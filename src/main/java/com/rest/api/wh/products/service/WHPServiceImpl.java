@@ -73,7 +73,7 @@ public class WHPServiceImpl implements WHPService {
 	 */
 
 	@Override
-	public ResponseEntity<?> upteProduct(int id,WHProducts product) {
+	public ResponseEntity<?> updateProduct(int id,WHProducts product) {
 		logger.info("into updating a product service");
 		Optional<WHProducts> prodOpt=Optional.ofNullable(repo.findById(id).orElseThrow(()-> new ResourceNotFoundException("no resource found.")));
 		WHProducts prod=prodOpt.get();
@@ -98,6 +98,16 @@ public class WHPServiceImpl implements WHPService {
 		repo.delete(prod);
 		logger.info("product deleted with id: "+id);
 		return ResponseEntity.status(HttpStatus.OK).body("product with given id "+id+" is deleted.");
+	}
+
+	@Override
+	public ResponseEntity<?> getProductByWPId(long wPId) {
+		logger.info("into getting a product by its warehouse product id");
+		WHProducts product= repo.findBywPId(wPId);
+		if(!(product==null)) {
+			return ResponseEntity.status(HttpStatus.OK).body(product);
+		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("product with given warehouse product id "+wPId+" not found");
 	}
 
 }

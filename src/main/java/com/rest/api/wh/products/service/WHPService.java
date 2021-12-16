@@ -14,7 +14,7 @@ public interface WHPService {
 	public ResponseEntity<?> createProducts(List<WHProducts> products);
 	public ResponseEntity<?> getAllProducts();
 	public ResponseEntity<?> getProduct(int id);
-	//public ResponseEntity<?> getProductByWPId(long wPId);
-	public ResponseEntity<?> upteProduct(int id, WHProducts product);
+	public ResponseEntity<?> getProductByWPId(long wPId);
+	public ResponseEntity<?> updateProduct(int id, WHProducts product);
 	public ResponseEntity<?> deleteProduct(int id);
 }
